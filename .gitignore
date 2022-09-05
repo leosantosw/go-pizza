@@ -53,3 +53,5 @@ buck-out/
 .expo/
 web-build/
 dist/
+
+Android/app/google-services.json

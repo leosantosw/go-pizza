@@ -13,6 +13,7 @@ module.exports = function(api) {
             '.jsx',
             '.js',
             '.json',
+            '.ttf',
           ],
           alias: {
             '@components': './src/components',

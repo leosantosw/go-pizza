@@ -3,22 +3,22 @@ import theme from './src/theme';
 import * as SplashScreen from 'expo-splash-screen';
 import { ThemeProvider } from 'styled-components/native';
 
-import { useFonts, DMSans_400Regular } from '@expo-google-fonts/dm-sans';
-import { DMSerifDisplay_400Regular } from '@expo-google-fonts/dm-serif-display';
-
 import { SignIn } from '@screens/SignIn';
 import { StatusBar } from 'expo-status-bar';
+import { useFonts } from 'expo-font';
 
 SplashScreen.preventAutoHideAsync();
 
 export function App() {
 
   const [fontsLoaded] = useFonts({
-    DMSans_400Regular,
-    DMSerifDisplay_400Regular,
-  })
+    'DMSans_400Regular': require('./src/assets/fonts/DMSans_400Regular.ttf'),
+    'DMSerifDisplay_400Regular': require('./src/assets/fonts/DMSerifDisplay_400Regular.ttf'),
+  });
 
-  if (fontsLoaded) {
+  if (!fontsLoaded) {
+    return null;
+  } else {
     SplashScreen.hideAsync();
   }
 
@@ -27,5 +27,5 @@ export function App() {
       <StatusBar style="light" translucent backgroundColor="transparent" />
       <SignIn />
     </ThemeProvider>
-  );
+  )
 }
